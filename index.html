@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <audio src="" id="audioTag"></audio>
+        <div class="musicListContainer">
+            <div class="musicTitleContainer">
+                <p class="title">1.December Nya - Lin Nit</p>
+                <div class="line"></div>
+            </div>
+            <div class="musicTitleContainer">
+                <p class="title">2.Tsaw Ra Ai Tsaw Hkrup Sai - Ann Naw</p>
+                <div class="line"></div>
+            </div>
+            <div class="musicTitleContainer">
+                <p class="title">3.Lann Hma Gyee Yae Bey - Wine Su Khine Thein</p>
+                <div class="line"></div>
+            </div>
+            <div class="musicTitleContainer">
+                <p class="title">4.Yee Zarr Sar - Sai Sai Kham Hlaing</p>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="musicPlayerContainer">
+            <p class="musicPlayTime">00:00/00:00</p>
+            <div class="musicLengthBar">
+                <input type="range" min="0" value="0" class="audioSlider interactiveSlider">
+            </div>
+            <div class="iconContainer">
+                <i class="material-icons fast_rewind" style="font-size: 33px;">fast_rewind</i>
+                <i class="material-icons replay_10" style="font-size: 33px;">replay_10</i>
+                <i class="material-icons play_arrow" style="font-size: 33px;">play_arrow</i>
+                <i class="material-icons pause" style="display: none; font-size: 33px;">pause</i>
+                <i class="material-icons forward_10" style="font-size: 33px;">forward_10</i>
+                <i class="material-icons fast_forward" style="font-size: 33px;">fast_forward</i>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

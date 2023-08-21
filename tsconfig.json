@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es2016",
+        "lib": ["es2016", "dom"],
+        "module": "commonjs",
+        "sourceMap": true,
+        "removeComments": true,
+        // "noEmitOnError": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true
+    }
+}
