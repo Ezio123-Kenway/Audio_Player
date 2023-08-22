@@ -24,13 +24,16 @@ const audioSlider = document.querySelector('.audioSlider') as HTMLInputElement;
 
 const musicPlayTime = document.querySelector('.musicPlayTime') as HTMLParagraphElement;
 
-
+let musicCurrentTime: string = "";
+let musicDuration: string = "";
 const showCurrentProgress = () => {
     audioTag.addEventListener('loadedmetadata', () => {
         duration = audioTag.duration;
+        // console.log(duration)
         audioSlider.max = duration.toString();
         audioTag.addEventListener('timeupdate', () => {
             currentTime = audioTag.currentTime;
+            // console.log(currentTime);
 
             let currentTimeInMinutes: number = Math.floor(currentTime/60);
             let remainingCurrentTimeInSeconds: number = Math.floor(currentTime%60);
@@ -39,16 +42,17 @@ const showCurrentProgress = () => {
                 remainingCurrentTimeInSeconds = 0
             }
             const remainingCurrentTimeSeconds: string = remainingCurrentTimeInSeconds < 10 ? `0${remainingCurrentTimeInSeconds}` : remainingCurrentTimeInSeconds.toString();
-            const musicCurrentTime = `0${currentTimeInMinutes}:${remainingCurrentTimeSeconds}`;
+            musicCurrentTime = `0${currentTimeInMinutes}:${remainingCurrentTimeSeconds}`;
 
             const durationInMinutes: number = Math.floor(duration/60);
             const remainingDurationInSeconds: number = Math.floor(duration%60);
             const remainingDurationSeconds: string = remainingDurationInSeconds < 10 ? `0${remainingDurationInSeconds}` :   remainingDurationInSeconds.toString(); 
-            const musicDuration = `0${durationInMinutes}:${remainingDurationSeconds}`
+            musicDuration = `0${durationInMinutes}:${remainingDurationSeconds}`
 
             musicPlayTime.innerText = `${musicCurrentTime}/${musicDuration}`;
 
-            if(audioSlider.value === duration.toString()) {
+            if(musicCurrentTime === musicDuration) {
+                console.log(audioSlider.value, audioTag.duration);
                 isPlaying = false;
                 updatePlayAndPauseBtn();
             }
@@ -96,6 +100,11 @@ playBtn.addEventListener('click', () => {
         titles[currentPlayingIndex].classList.add('currentTitle');
         updatePlayAndPauseBtn();
         showCurrentProgress();
+    }else if(musicCurrentTime === musicDuration) {
+        console.log(audioTag.src);
+        const currentPlayingTrack: Track|undefined = tracks.find(track => audioTag.src.includes(track.src));
+        audioTag.src = currentPlayingTrack.src;
+        updatePlayAndPauseBtn();
     }else {
         updatePlayAndPauseBtn();
     }
